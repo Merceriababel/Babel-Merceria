@@ -1,15 +1,21 @@
-"""Utilidades de fechas en la zona horaria del negocio (settings.TZ).
+"""Utilidades de fechas en la zona horaria del negocio (settings.TIMEZONE).
 
 Las fechas se guardan en la base con zona horaria; acá se calculan los rangos de
 "hoy", "este mes" o "este año" respetando la hora local de Argentina.
 Todos los rangos son [inicio, fin): incluyen el inicio y excluyen el fin.
 """
-from datetime import date, datetime, time, timedelta
+from datetime import date, datetime, time, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 from ..config import settings
 
-TZ = ZoneInfo(settings.TZ)
+# Zona horaria del negocio. Si el servidor no tiene la base de zonas horarias (paquete tzdata)
+# o el nombre está mal escrito, se usa UTC-3 fijo: Argentina no cambia la hora en verano,
+# así que el resultado es el mismo y la API no se cae al arrancar.
+try:
+    TZ = ZoneInfo(settings.TIMEZONE)
+except Exception:
+    TZ = timezone(timedelta(hours=-3), "ART")
 
 
 def now() -> datetime:

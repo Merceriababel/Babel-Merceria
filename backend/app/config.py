@@ -33,7 +33,9 @@ class Settings(BaseSettings):
     ALERT_EMAIL: str = ""     # quién recibe los avisos de stock bajo
 
     # --- Zona horaria del negocio (define qué es "hoy" en reportes y ventas del día) ---
-    TZ: str = "America/Argentina/Cordoba"
+    # OJO: no se llama TZ porque ese nombre lo usa el propio sistema (en Vercel vale ":UTC")
+    # y pisaría este valor. Por defecto ya es la de Argentina: normalmente no hace falta cargarla.
+    TIMEZONE: str = "America/Argentina/Cordoba"
 
 
 # Instancia única que se importa desde el resto del código

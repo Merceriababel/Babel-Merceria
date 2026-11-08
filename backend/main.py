@@ -12,4 +12,4 @@ from app.main import app as api_app
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/api", api_app)  # Vercel conserva el prefijo /api
-app.mount("/", api_app)     # por si el prefijo llegara recortado
+app.mount("/", api_app)     # por si el prefijo llegara recortado 

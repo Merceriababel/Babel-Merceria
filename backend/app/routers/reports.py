@@ -123,7 +123,7 @@ def monthly(year: int | None = None, db: Session = Depends(get_db), user=Depends
 
     def mes(columna):
         """Número de mes (1-12) de una columna de fecha, en hora local del negocio."""
-        return func.extract("month", func.timezone(settings.TZ, columna))
+        return func.extract("month", func.timezone(settings.TIMEZONE, columna))
 
     mes_venta, mes_compra = mes(Sale.fecha), mes(Purchase.fecha)
 
