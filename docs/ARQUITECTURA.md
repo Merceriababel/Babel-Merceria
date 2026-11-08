@@ -5,9 +5,7 @@ Esta guía explica **dónde está cada cosa** y **cómo agregar o cambiar funcio
 ## 1. Mapa del proyecto
 
 ```
-├── vercel.json            Configuración de Vercel (redirige /api/* al backend)
-├── requirements.txt       Dependencias de Python (Vercel las instala)
-├── api/index.py           Entrada del backend en Vercel (monta la API bajo /api)
+├── vercel.json            Configuración de Vercel (servicios: public/ + backend/)
 ├── public/                FRONTEND: sitio estático (HTML + CSS + JS puro)
 │   ├── index.html         Cáscara de la página única
 │   ├── css/styles.css     Todos los estilos (paleta en las variables de arriba)
@@ -19,6 +17,7 @@ Esta guía explica **dónde está cada cosa** y **cómo agregar o cambiar funcio
 │       ├── app.js         Sesión, menú y rutas
 │       └── pages/         Una pantalla por archivo
 ├── backend/               BACKEND: API en Python (FastAPI)
+│   ├── main.py            Entrada para Vercel (monta la API bajo /api)
 │   ├── app/
 │   │   ├── main.py        Crea la app y registra los módulos
 │   │   ├── config.py      Variables de entorno

@@ -1,6 +1,17 @@
 {
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api/index" }],
-  "functions": {
-    "api/index.py": { "includeFiles": "backend/**" }
-  }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "frontend": {
+      "root": "public/"
+    },
+    "backend": {
+      "root": "backend/",
+      "framework": "fastapi",
+      "entrypoint": "main:app"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": { "service": "backend" } },
+    { "source": "/(.*)", "destination": { "service": "frontend" } }
+  ]
 }

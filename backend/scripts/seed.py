@@ -27,14 +27,14 @@ from app.security import hash_password  # noqa: E402
 
 # (rol, nombre visible, correo, contraseña)
 USUARIOS = [
-    ("admin", "Administrador", os.getenv("ADMIN_EMAIL", "Marcossosa1999@outlook.com.ar"), os.getenv("PPalermo100")),
-    ("empleado", "Empleado", os.getenv("EMPLEADO_EMAIL", "juliceles17@gmail.com"), os.getenv("julipink11")),
+    ("admin", "Administrador", os.getenv("ADMIN_EMAIL", "Marcossosa1999@outlook.com.ar"), os.getenv("ADMIN_PASSWORD")),
+    ("empleado", "Empleado", os.getenv("EMPLEADO_EMAIL", "empleado@babel.com"), os.getenv("EMPLEADO_PASSWORD")),
 ]
 CATEGORIAS = ["Telas", "Lanas", "Hilos", "Cintas", "Botones", "Agujas y accesorios", "Otros"]
 
 db = SessionLocal()
 
-# Usuarios Rol
+# Usuarios: uno por rol (la base también lo exige con un índice único)
 for rol, nombre, email, password in USUARIOS:
     if not password:
         sys.exit(f"Falta la contraseña: definí {rol.upper()}_PASSWORD")
