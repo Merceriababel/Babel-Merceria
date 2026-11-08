@@ -1,0 +1,5 @@
+database
+backend/alembic
+backend/alembic.ini
+backend/scripts
+**/__pycache__
